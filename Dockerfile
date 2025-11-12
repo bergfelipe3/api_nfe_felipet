@@ -78,15 +78,15 @@ EXPOSE 3000
 # ===========================================================
 # ENTRYPOINT + STARTUP LOGIC
 # ===========================================================
-CMD bash -c "
-  rm -f tmp/pids/server.pid &&
-  echo '➡️ Executando migrações...' &&
-  echo '🔑 Render recebeu RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}' &&
-  if [ -z \"${RAILS_MASTER_KEY}\" ]; then
-    echo '🚨 ERRO: Render não recebeu a variável RAILS_MASTER_KEY!';
-    exit 1;
-  fi &&
-  bundle exec rails db:migrate &&
-  echo '🚀 Iniciando servidor Puma...' &&
-  bundle exec rails s -b 0.0.0.0 -e production
-"
+CMD ["bash", "-c", "\
+  rm -f tmp/pids/server.pid && \
+  echo '➡️ Executando migrações...' && \
+  echo '🔑 Render recebeu RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}' && \
+  if [ -z \"${RAILS_MASTER_KEY}\" ]; then \
+    echo '🚨 ERRO: Render não recebeu a variável RAILS_MASTER_KEY!'; \
+    exit 1; \
+  fi && \
+  bundle exec rails db:migrate && \
+  echo '🚀 Iniciando servidor Puma...' && \
+  bundle exec rails s -b 0.0.0.0 -e production \
+"]
