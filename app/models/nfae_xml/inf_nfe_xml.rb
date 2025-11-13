@@ -9,7 +9,7 @@ class InfNfeXml
         @aamm = gerar_aamm  
         @cnpjEmitente = "05599253000147" 
         @mod = "55" 
-        @serie = "899" 
+        @serie = "898" 
         @nNF = gerar_nNF
         @tpEmis = "1"
         @cNF = gerar_cNF
